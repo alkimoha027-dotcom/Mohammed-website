@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>موقع محمد للعمل الحر</title>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Arial', sans-serif; }
+    body { background:#f5f5f5; color:#333; line-height:1.6; }
+
+    nav { 
+      background:#004aad; 
+      padding:10px 20px; 
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center; 
+      color:white; 
+      font-size:20px;
+      font-weight:bold;
+    }
+
+    nav .nav-btn { 
+      cursor:pointer; 
+      margin-left:15px; 
+      padding:8px 15px; 
+      background:#0066ff; 
+      border:none; 
+      border-radius:5px; 
+      color:white; 
+      transition:0.3s; 
+    }
+
+    nav .nav-btn:hover { background:#0052cc; transform:scale(1.05); }
+
+    section { display:none; padding:50px 20px; min-height:80vh; }
+    section h1 { margin-bottom:20px; font-size:2rem; color:#004aad; }
+    section p { font-size:1.1rem; margin-bottom:15px; }
+
+    button { 
+      cursor:pointer; padding:10px 20px; 
+      background:#004aad; color:white; 
+      border:none; border-radius:5px; 
+      transition:0.3s; 
+    }
+
+    button:hover { background:#002f80; transform:scale(1.05); }
+
+    form { 
+      max-width:500px; background:white; padding:20px; 
+      border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); 
+      margin:0 auto; 
+    }
+
+    form input, form textarea { 
+      width:100%; padding:10px; margin-bottom:15px; 
+      border:1px solid #ccc; border-radius:5px; 
+    }
+
+    form input:focus, form textarea:focus { border-color:#004aad; outline:none; }
+
+    footer { background:#004aad; color:white; text-align:center; padding:20px; margin-top:40px; }
+  </style>
+
+</head>
+<body>
+
+  <!-- ===== التنقل ===== -->
+  <nav>
+    <div>محمد المجاهد</div>
+    <div>
+      <button class="nav-btn" data-target="home">الرئيسية</button>
+      <button class="nav-btn" data-target="about">عنّي</button>
+      <button class="nav-btn" data-target="services">خدماتي</button>
+      <button class="nav-btn" data-target="mywork">أعمالي</button>
+      <button class="nav-btn" data-target="contact">تواصل</button>
+    </div>
+  </nav>
+
+  <!-- ===== الصفحة الرئيسية ===== -->
+  <section id="home">
+    <h1>مرحبًا بك في موقعي</h1>
+    <p>أنا محمد، متخصص في العمل الحر وأقدم أفضل الخدمات الرقمية لعملائي.</p>
+    <button onclick="showSection('services')">شاهد خدماتي</button>
+  </section>
+
+  <!-- ===== عنّي ===== -->
+  <section id="about">
+    <h1>عنّي</h1>
+    <p>اسمي محمد، أعمل في مجال تطوير المواقع وتصميم واجهات المستخدم وبرمجة التطبيقات.</p>
+    <p>أضمن تقديم عمل احترافي بجودة عالية وتسليم المشاريع في الوقت المحدد.</p>
+  </section>
+
+  <!-- ===== خدماتي ===== -->
+  <section id="services">
+    <h1>خدماتي</h1>
+    <ul>
+      <li>تصميم وتطوير المواقع الإلكترونية</li>
+      <li>برمجة تطبيقات سطح المكتب والهاتف</li>
+      <li>تصميم واجهات وتجربة مستخدم UI/UX</li>
+      <li>إدارة المشاريع الرقمية والاستشارات التقنية</li>
+    </ul>
+  </section>
+
+  <!-- ===== أعمالي ===== -->
+  <section id="mywork">
+    <h1>أعمالي</h1>
+    <p>للاطلاع على آخر مشاريعي والتحديثات، راسلني على:</p>
+    <p><strong>alkimoha027@gmail.com</strong></p>
+  </section>
+
+  <!-- ===== تواصل ===== -->
+  <section id="contact">
+    <h1>تواصل معي</h1>
+    <form id="contact-form">
+      <input type="text" id="name" placeholder="اسمك" required>
+      <input type="email" id="email" placeholder="بريدك الإلكتروني" required>
+      <textarea id="message" rows="5" placeholder="رسالتك" required></textarea>
+      <button type="submit">إرسال الرسالة</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2025 محمد المجاهد — جميع الحقوق محفوظة.
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const navButtons = document.querySelectorAll('.nav-btn');
+
+    function showSection(id) {
+      sections.forEach(section => { 
+        section.style.display = section.id === id ? 'block' : 'none'; 
+      });
+    }
+
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.target;
+        showSection(target);
+      });
+    });
+
+    showSection('home');
+
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('تم إرسال الرسالة بنجاح!');
+      contactForm.reset();
+    });
+  </script>
+
+</body>
+</html>
